@@ -8,6 +8,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Manipulation-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-11557c?style=for-the-badge&logo=python&logoColor=white)](https://matplotlib.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 </div>
@@ -30,10 +31,10 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ## ✨ Features
 
-- **Sentiment-Driven Performance Analysis:** Correlates daily closed PnL and leverage data from traders with the Bitcoin Fear & Greed Index.
-- **Data Cleansing & Aggregation:** Robust preprocessing pipeline that handles messy historical trade data, aligns timeframes, and computes aggregate metrics.
-- **Advanced Visualizations:** Clean, compelling charts built with Matplotlib that illustrate complex market dynamics at a glance.
-- **Behavioral Insights:** Demonstrates that "Greed" phases correspond with higher PnL and leverage usage, while "Fear" phases trigger conservative, risk-averse behavior.
+- **Sentiment-Driven Performance Analysis:** Correlates daily closed PnL and size metrics from traders with the Bitcoin Fear & Greed Index.
+- **Data Cleansing & Aggregation:** Preprocessing pipeline that parses string timestamps, aligns timeframes, and filters relevant historical trade records.
+- **Advanced Visualizations:** Clean, compelling charts built with Matplotlib that illustrate complex market dynamics and average PnL by sentiment classification at a glance.
+- **Behavioral Insights:** Demonstrates how trader performance, size, and PnL differ across varying market sentiment phases (Fear vs. Greed).
 
 ---
 
@@ -42,8 +43,8 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 - **Language:** Python
 - **Data Manipulation & Analysis:** Pandas, NumPy
 - **Visualization:** Matplotlib
-- **Environment:** Jupyter Notebooks
-- **Data Sources:** Hyperliquid Historical Trader Data, Alternative.me Crypto Fear & Greed Index
+- **Environment:** Jupyter Notebook
+- **Data Sources:** Historical Trader Data (`historical_data.csv`), Crypto Fear & Greed Index (`fear_greed_index.csv`)
 
 ---
 
@@ -80,7 +81,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
      cp .env.example .env
      ```
 
-   - Update `.env` with your API keys if you wish to fetch live data (e.g., Hyperliquid API, Alternative.me API).
+   - Update `.env` with your API keys if you wish to fetch live data instead of using the provided CSV datasets.
 
 5. **Run the Notebook:**
 
@@ -94,20 +95,19 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ## 🏗 Architecture / How it Works
 
-1. **Data Ingestion:** Historical trade data (Hyperliquid) and the Bitcoin Fear & Greed Index are loaded from raw CSVs/APIs.
-2. **Preprocessing:** Time-series data is normalized. Dates are aligned to merge high-frequency trade data with daily sentiment indices.
-3. **Computation Logic:** Aggregations are performed to calculate average PnL, leverage ratios, and win rates categorized by sentiment thresholds (e.g., Extreme Fear, Fear, Neutral, Greed, Extreme Greed).
-4. **Output:** The data is fed into Matplotlib to generate visual distributions and trend lines, clearly illustrating the shift in trader behavior.
+1. **Data Ingestion:** Historical trade data (`historical_data.csv`) and the Bitcoin Fear & Greed Index (`fear_greed_index.csv`) are loaded into Pandas DataFrames.
+2. **Preprocessing:** Time-series data is normalized. Specifically, string timestamps (`Timestamp IST` with format `%d-%m-%Y %H:%M`) are parsed, and the date component is extracted to prepare for merging with daily sentiment indices.
+3. **Computation Logic:** The datasets are inner-joined on the `date` column. Realized trades are isolated by filtering out open or unrealized positions (where `Closed PnL != 0`). Aggregations (like `mean()`) are performed on `Closed PnL` and `Size USD`, grouped by the sentiment `classification`.
+4. **Output:** The aggregated data is fed into Matplotlib to generate visual distributions, such as bar charts comparing Average PnL by Market Sentiment.
 
 ---
 
 ## 💡 Technical Highlights & Learnings
 
-- **Challenge:** Merging high-frequency asynchronous trade executions with daily sentiment metrics without losing critical granularity or introducing look-ahead bias.
-  - **Solution:** Implemented robust Pandas `merge_asof` and custom grouping logic to accurately attribute trades to the exact prevailing sentiment at execution time.
-- **Challenge:** Handling outliers and extreme anomalies in historical trade data (e.g., liquidation spikes).
-  - **Solution:** Applied IQR-based filtering and custom robust statistical techniques to ensure the final analysis reflected genuine behavioral trends rather than noise.
-- **Takeaway:** Building this pipeline reinforced the importance of writing scalable data-cleaning functions and maintaining a deep understanding of index alignment in time-series analysis.
+- **Challenge:** Merging high-frequency asynchronous trade executions with daily sentiment metrics without losing critical data or introducing errors.
+  - **Solution:** Standardized the temporal resolution by cleanly parsing complex string timestamps (`%d-%m-%Y %H:%M`) and extracting just the date component. This allowed for an accurate, deterministic inner join on the `date` key between the high-frequency trading dataframe and the daily sentiment dataframe.
+- **Challenge:** Accurately calculating final PnL averages without skewing results with ongoing or unrealized positions.
+  - **Solution:** Applied strict filtering logic (`Closed PnL != 0`) to extract only finalized trades. By doing so, the statistical aggregations (`mean()`) grouped by sentiment classifications precisely reflect actual realized trader performance rather than floating PnL fluctuations.
 
 ---
 
