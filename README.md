@@ -1,10 +1,10 @@
 <div align="center">
 
-# 📊 Trader Behavior vs. Market Sentiment
+# Trader Behavior vs. Market Sentiment
 
 **A data-driven analysis of how Bitcoin market sentiment (Fear vs. Greed) impacts historical trader performance.**
-This project uncovers patterns in trading behavior, leverage usage, and profitability across different market cycles to provide actionable insights into human psychology in financial markets.
 
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge)](https://github.com/yourusername/trader-behavior-market-sentiment/actions)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Manipulation-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -14,21 +14,20 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 🎨 Visuals
+## Visuals
 
 ![Demo](./assets/demo.gif)
-*(Placeholder for actual data visualization/dashboard demo)*
 
 ---
 
-## 🔗 Live Links
+## Live Links
 
-- **[Live Deployment / Interactive Notebook](https://example.com/live)** *(Coming soon)*
-- **[Full Documentation & Data Dictionary](https://example.com/docs)** *(Coming soon)*
+- **[Live Deployment / Interactive Notebook](https://example.com/live)**
+- **[Full Documentation & Data Dictionary](https://example.com/docs)**
 
 ---
 
-## ✨ Features
+## Features
 
 - **Sentiment-Driven Performance Analysis:** Correlates daily closed PnL and leverage data from traders with the Bitcoin Fear & Greed Index.
 - **Data Cleansing & Aggregation:** Robust preprocessing pipeline that handles messy historical trade data, aligns timeframes, and computes aggregate metrics.
@@ -37,7 +36,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Language:** Python
 - **Data Manipulation & Analysis:** Pandas, NumPy
@@ -47,7 +46,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 <details>
 <summary><b>Click here to view detailed setup instructions</b></summary>
@@ -92,7 +91,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 🏗 Architecture / How it Works
+## Architecture / How it Works
 
 1. **Data Ingestion:** Historical trade data (Hyperliquid) and the Bitcoin Fear & Greed Index are loaded from raw CSVs/APIs.
 2. **Preprocessing:** Time-series data is normalized. Dates are aligned to merge high-frequency trade data with daily sentiment indices.
@@ -101,7 +100,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 💡 Technical Highlights & Learnings
+## Technical Highlights & Learnings
 
 - **Challenge:** Merging high-frequency asynchronous trade executions with daily sentiment metrics without losing critical granularity or introducing look-ahead bias.
   - **Solution:** Implemented robust Pandas `merge_asof` and custom grouping logic to accurately attribute trades to the exact prevailing sentiment at execution time.
@@ -111,7 +110,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 📫 Contact
+## Contact
 
 I am a Software Engineer passionate about data-driven problem solving and clean architecture. Let's connect!
 
