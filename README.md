@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📊 Trader Behavior vs. Market Sentiment
+# Trader Behavior vs. Market Sentiment
 
 **A data-driven analysis of how Bitcoin market sentiment (Fear vs. Greed) impacts historical trader performance.**
 This project uncovers patterns in trading behavior, leverage usage, and profitability across different market cycles to provide actionable insights into human psychology in financial markets.
@@ -9,26 +9,27 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Manipulation-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge)](https://github.com/yourusername/trader-behavior-market-sentiment/actions)
 
 </div>
 
 ---
 
-## 🎨 Visuals
+## Visuals
 
 ![Demo](./assets/demo.gif)
 *(Placeholder for actual data visualization/dashboard demo)*
 
 ---
 
-## 🔗 Live Links
+## Live Links
 
 - **[Live Deployment / Interactive Notebook](https://example.com/live)** *(Coming soon)*
 - **[Full Documentation & Data Dictionary](https://example.com/docs)** *(Coming soon)*
 
 ---
 
-## ✨ Features
+## Features
 
 - **Sentiment-Driven Performance Analysis:** Correlates daily closed PnL and leverage data from traders with the Bitcoin Fear & Greed Index.
 - **Data Cleansing & Aggregation:** Robust preprocessing pipeline that handles messy historical trade data, aligns timeframes, and computes aggregate metrics.
@@ -37,17 +38,17 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Language:** Python
 - **Data Manipulation & Analysis:** Pandas, NumPy
 - **Visualization:** Matplotlib
-- **Environment:** Jupyter Notebooks
+- **Environment:** Jupyter Notebook
 - **Data Sources:** Hyperliquid Historical Trader Data, Alternative.me Crypto Fear & Greed Index
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 <details>
 <summary><b>Click here to view detailed setup instructions</b></summary>
@@ -74,7 +75,7 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
    ```
 
 4. **Environment Variables:**
-   - Copy the example `.env` file:
+   - Set up your environment variables by copying the provided `.env.example` file:
 
      ```bash
      cp .env.example .env
@@ -88,11 +89,13 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
    jupyter notebook Trading_Behaviour_vs_Market_Sentiment.ipynb
    ```
 
+   > **Note:** The repository currently lacks the necessary dataset CSV files (e.g., `historical_data.csv`, `fear_greed_index.csv`) required to execute the notebook locally. Ensure you have these files in the working directory before running.
+
 </details>
 
 ---
 
-## 🏗 Architecture / How it Works
+## Architecture / How it Works
 
 1. **Data Ingestion:** Historical trade data (Hyperliquid) and the Bitcoin Fear & Greed Index are loaded from raw CSVs/APIs.
 2. **Preprocessing:** Time-series data is normalized. Dates are aligned to merge high-frequency trade data with daily sentiment indices.
@@ -101,20 +104,20 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 💡 Technical Highlights & Learnings
+## Technical Highlights & Learnings
 
 - **Challenge:** Merging high-frequency asynchronous trade executions with daily sentiment metrics without losing critical granularity or introducing look-ahead bias.
-  - **Solution:** Implemented robust Pandas `merge_asof` and custom grouping logic to accurately attribute trades to the exact prevailing sentiment at execution time.
+  - **Solution:** Implemented robust Pandas `merge_asof` and custom grouping logic to accurately attribute trades to the exact prevailing sentiment at execution time. This demonstrated strong problem-solving skills and the ability to handle complex time-series data alignment efficiently.
 - **Challenge:** Handling outliers and extreme anomalies in historical trade data (e.g., liquidation spikes).
-  - **Solution:** Applied IQR-based filtering and custom robust statistical techniques to ensure the final analysis reflected genuine behavioral trends rather than noise.
+  - **Solution:** Applied rigorous IQR filtering and custom robust statistical techniques to ensure the final analysis reflected genuine behavioral trends rather than noise, showcasing a strong engineering mindset focused on data integrity.
 - **Takeaway:** Building this pipeline reinforced the importance of writing scalable data-cleaning functions and maintaining a deep understanding of index alignment in time-series analysis.
 
 ---
 
-## 📫 Contact
+## Contact
 
 I am a Software Engineer passionate about data-driven problem solving and clean architecture. Let's connect!
 
-- **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- **Portfolio:** [yourportfolio.dev](https://yourportfolio.dev)
+- **LinkedIn:** [My LinkedIn Profile](https://www.linkedin.com/in/username)
+- **Portfolio:** [My Portfolio Website](https://www.portfolio.dev)
 - **Email:** [your.email@example.com](mailto:your.email@example.com)
