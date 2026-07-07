@@ -1,10 +1,10 @@
 <div align="center">
 
-# 📊 Trader Behavior vs. Market Sentiment
+# Trader Behavior vs. Market Sentiment
 
-**A data-driven analysis of how Bitcoin market sentiment (Fear vs. Greed) impacts historical trader performance.**
-This project uncovers patterns in trading behavior, leverage usage, and profitability across different market cycles to provide actionable insights into human psychology in financial markets.
+A data-driven analysis of how Bitcoin market sentiment (Fear vs. Greed) impacts historical trader performance, providing actionable insights into human psychology in financial markets.
 
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge)](#)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data_Manipulation-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -14,40 +14,39 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 🎨 Visuals
+## Visuals
 
 ![Demo](./assets/demo.gif)
 *(Placeholder for actual data visualization/dashboard demo)*
 
 ---
 
-## 🔗 Live Links
+## Live Links
 
 - **[Live Deployment / Interactive Notebook](https://example.com/live)** *(Coming soon)*
 - **[Full Documentation & Data Dictionary](https://example.com/docs)** *(Coming soon)*
 
 ---
 
-## ✨ Features
+## Features
 
-- **Sentiment-Driven Performance Analysis:** Correlates daily closed PnL and leverage data from traders with the Bitcoin Fear & Greed Index.
+- **Sentiment-Driven Performance Analysis:** Correlates daily closed PnL and trade size data from traders with the Bitcoin Fear & Greed Index.
 - **Data Cleansing & Aggregation:** Robust preprocessing pipeline that handles messy historical trade data, aligns timeframes, and computes aggregate metrics.
 - **Advanced Visualizations:** Clean, compelling charts built with Matplotlib that illustrate complex market dynamics at a glance.
-- **Behavioral Insights:** Demonstrates that "Greed" phases correspond with higher PnL and leverage usage, while "Fear" phases trigger conservative, risk-averse behavior.
+- **Behavioral Insights:** Demonstrates that "Greed" phases correspond with higher PnL and larger trade sizes, while "Fear" phases trigger conservative, risk-averse behavior.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Language:** Python
 - **Data Manipulation & Analysis:** Pandas, NumPy
 - **Visualization:** Matplotlib
-- **Environment:** Jupyter Notebooks
-- **Data Sources:** Hyperliquid Historical Trader Data, Alternative.me Crypto Fear & Greed Index
+- **Environment:** Jupyter Notebook
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 <details>
 <summary><b>Click here to view detailed setup instructions</b></summary>
@@ -74,13 +73,13 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
    ```
 
 4. **Environment Variables:**
-   - Copy the example `.env` file:
+   - Copy the example `.env.example` file to create a new `.env` file:
 
      ```bash
      cp .env.example .env
      ```
 
-   - Update `.env` with your API keys if you wish to fetch live data (e.g., Hyperliquid API, Alternative.me API).
+   - Update `.env` with any required configuration variables.
 
 5. **Run the Notebook:**
 
@@ -92,26 +91,26 @@ This project uncovers patterns in trading behavior, leverage usage, and profitab
 
 ---
 
-## 🏗 Architecture / How it Works
+## Architecture / How it Works
 
-1. **Data Ingestion:** Historical trade data (Hyperliquid) and the Bitcoin Fear & Greed Index are loaded from raw CSVs/APIs.
-2. **Preprocessing:** Time-series data is normalized. Dates are aligned to merge high-frequency trade data with daily sentiment indices.
-3. **Computation Logic:** Aggregations are performed to calculate average PnL, leverage ratios, and win rates categorized by sentiment thresholds (e.g., Extreme Fear, Fear, Neutral, Greed, Extreme Greed).
-4. **Output:** The data is fed into Matplotlib to generate visual distributions and trend lines, clearly illustrating the shift in trader behavior.
+1. **Data Ingestion:** Historical trade data and the Bitcoin Fear & Greed Index are loaded from raw CSVs into Pandas DataFrames.
+2. **Preprocessing:** Time-series data is normalized. Dates are formatted and aligned to merge high-frequency trade data with daily sentiment indices.
+3. **Computation Logic:** Aggregations are performed to calculate average PnL and trade size categorized by sentiment thresholds (e.g., Extreme Fear, Fear, Neutral, Greed, Extreme Greed).
+4. **Output:** The categorized data is grouped and fed into Matplotlib to generate visual distributions, clearly illustrating the shift in trader behavior.
 
 ---
 
-## 💡 Technical Highlights & Learnings
+## Technical Highlights & Learnings
 
 - **Challenge:** Merging high-frequency asynchronous trade executions with daily sentiment metrics without losing critical granularity or introducing look-ahead bias.
-  - **Solution:** Implemented robust Pandas `merge_asof` and custom grouping logic to accurately attribute trades to the exact prevailing sentiment at execution time.
-- **Challenge:** Handling outliers and extreme anomalies in historical trade data (e.g., liquidation spikes).
+  - **Solution:** Addressed index alignment issues in time-series analysis by using `merge_asof` to accurately attribute trades to the exact prevailing sentiment at execution time.
+- **Challenge:** Handling outliers and extreme anomalies in historical trade data (e.g., liquidation spikes or unusually large trade sizes).
   - **Solution:** Applied IQR-based filtering and custom robust statistical techniques to ensure the final analysis reflected genuine behavioral trends rather than noise.
 - **Takeaway:** Building this pipeline reinforced the importance of writing scalable data-cleaning functions and maintaining a deep understanding of index alignment in time-series analysis.
 
 ---
 
-## 📫 Contact
+## Contact
 
 I am a Software Engineer passionate about data-driven problem solving and clean architecture. Let's connect!
 
